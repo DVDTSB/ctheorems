@@ -1,4 +1,6 @@
 # typst-theorems
+Fork of [https://github.com/sahasatvik/typst-theorems](https://github.com/sahasatvik/typst-theorems) for making it an official typst plugin.
+
 
 An implementation of numbered theorem environments in
 [typst](https://github.com/typst/typst).
