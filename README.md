@@ -1,10 +1,9 @@
-# typst-theorems
+# ctheorems
 Fork of [https://github.com/sahasatvik/typst-theorems](https://github.com/sahasatvik/typst-theorems) for making it an official typst plugin.
 
 
 An implementation of numbered theorem environments in
 [typst](https://github.com/typst/typst).
-Copy and import the [theorems.typ](theorems.typ) file to use in your own projects.
 
 ### Features
 - Numbered theorem environments can be created and customized.
@@ -15,17 +14,17 @@ Copy and import the [theorems.typ](theorems.typ) file to use in your own project
  Currently, the `<label>` must be placed _inside_ the environment.
 
 ## Manual and Examples
-Get acquainted with `typst-theorems` by checking out the minimal example below!
+Get acquainted with `ctheorems` by checking out the minimal example below!
 
-You can read the [manual](manual.pdf) for a full walkthrough of functionality offered by this module; flick through [manual_examples](manual_examples.pdf) and its [typ file](manual_examples.typ) to just see the examples.
+You can read the [manual](assets/manual.pdf) for a full walkthrough of functionality offered by this module; flick through [manual_examples](assets/manual_examples.pdf) and its [typ file](assets/manual_examples.typ) to just see the examples.
 
-The [differential_calculus.typ](differential_calculus.typ) ([render](differential_calculus.pdf)) project provides a practical use case. 
+The [differential_calculus.typ](assets/differential_calculus.typ) ([render](assets/differential_calculus.pdf)) project provides a practical use case. 
 
-![basic example](basic.png)
+![basic example](assets/basic.png)
 
 ### Preamble
 ```
-#import "theorems.typ": *
+\\import package wait a lil since it's not yet published
 
 #set page(width: 16cm, height: auto, margin: 1.5cm)
 #set heading(numbering: "1.1.")
