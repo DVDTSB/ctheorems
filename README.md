@@ -15,9 +15,9 @@ Theorem library based on (and compatible) with [typst-theorems](https://github.c
 ## Manual and Examples
 Get acquainted with `ctheorems` by checking out the minimal example below!
 
-You can read the [manual](assets/manual.pdf) (im working on it haha) for a full walkthrough of functionality offered by this module.
+You can read the [manual](0.1.0/assets/manual.pdf) (im working on it haha) for a full walkthrough of functionality offered by this module.
 
-![basic example](assets/basic.png)
+![basic example](0.1.0/assets/basic.png)
 
 ### Preamble
 ```typst
