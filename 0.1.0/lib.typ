@@ -1,5 +1,3 @@
-// Store theorem environment numbering
-
 #let thmcounters = state("thm",
   (
     "counters": ("heading": ()),
@@ -10,17 +8,13 @@
 
 #let thmenv(identifier, base, base_level, fmt) = {
 
-  let global_numbering = numbering
-
   return (
     body,
-    name: none,
-    numbering: "1.1",
     base: base,
-    base_level: base_level
+    base_level: base_level,
+    ..args,
   ) => {
-    let number = none
-    if not numbering == none {
+    if not ("number" in args.named().keys()) {
       locate(loc => {
         thmcounters.update(thmpair => {
           let counters = thmpair.at("counters")
@@ -62,16 +56,12 @@
           )
         })
       })
-
-      number = thmcounters.display(x => {
-        return global_numbering(numbering, ..x.at("latest"))
-      })
+      locate(loc => {  fmt(body, number:thmcounters.at(loc).latest, ..args) } )
+    }else{
+      fmt(body, ..args)
     }
-
-    fmt(name, number, body)
   }
 }
-
 
 #let thmref(
   label,
@@ -104,6 +94,27 @@
 }
 
 
+
+#let global_numbering=numbering
+
+#let thmbasic = (
+  identifier,
+  head,
+  numbering :"1.1",
+  base:"heading",
+  base_level: none
+) => {
+  let fmt = (body, name:none, title:none,number:none, numbering:numbering) => {
+    if title==none {
+      title=head
+    }
+    
+    [#strong[#title  #{if numbering != none [#global_numbering(numbering, ..number)]}]#{if name != none [ (#name)]}*:*  #body \ ]
+  }
+  return thmenv(identifier, base, base_level, fmt)
+}
+
+/// I am quirky
 #let thmbox(
   identifier,
   head,
@@ -117,18 +128,21 @@
   titlefmt: strong,
   bodyfmt: x => x,
   separator: [#h(0.1em):#h(0.2em)],
+  numbering :"1.1",
   base: "heading",
   base_level: none,
 ) = {
-  let boxfmt(name, number, body) = {
-    if not name == none {
+  let boxfmt(name:none, number:none, title:none, body, numbering:numbering) = {
+    if  name != none {
       name = [ #namefmt(name)]
     } else {
       name = []
     }
-    let title = head
-    if not number == none {
-      title += " " + number
+    if title==none {
+    title = head
+    }
+    if number != none and numbering!=none {
+      title += " " + global_numbering(numbering,..number)
     }
     title = titlefmt(title)
     body = bodyfmt(body)
@@ -148,7 +162,6 @@
   return thmenv(identifier, base, base_level, boxfmt)
 }
 
-
 #let thmplain = thmbox.with(
   padding: (top: 0em, bottom: 0em),
   breakable: true,
@@ -156,4 +169,3 @@
   namefmt: name => emph([(#name)]),
   titlefmt: emph,
 )
-
