@@ -4,7 +4,7 @@ Theorem library based on (and compatible) with [typst-theorems](https://github.c
 
 ### Features
 - Numbered theorem environments can be created and customized.
-- Awesome presets.
+- Awesome presets (coming soon!)
 - Environments can share the same counter, via same `identifier`s.
 - Environment counters can be _attached_ (just as subheadings are attached to headings) to other environments, headings, or keep a global count via `base`.
 - The depth of a counter can be manually set, via `base_level`.
@@ -21,7 +21,7 @@ You can read the [manual](assets/manual.pdf) (im working on it haha) for a full 
 
 ### Preamble
 ```typst
-#import "@local/ctheorems:0.1.0": *
+#import "@preview/ctheorems:0.1.0": *
 
 #set page(width: 16cm, height: auto, margin: 1.5cm)
 #set heading(numbering: "1.1.")
@@ -79,3 +79,8 @@ You can read the [manual](assets/manual.pdf) (im working on it haha) for a full 
 ]
 ```
 
+## Credits
+- [@sahasatvik (Satvik Saha)](https://github.com/sahasatvik)
+- [@rmolinari (Rory Molinari)](https://github.com/rmolinari)
+- [@MJHutchinson (Michael Hutchinson)](https://github.com/MJHutchinson)
+- [@DVDTSB](https://github.com/DVDTSB)

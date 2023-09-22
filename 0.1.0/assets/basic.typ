@@ -1,4 +1,4 @@
-#import "@local/ctheorems:0.1.0": *
+#import "@preview/ctheorems:0.1.0": *
 
 #set page(width: 16cm, height: auto, margin: 1.5cm)
 #set heading(numbering: "1.1.")
